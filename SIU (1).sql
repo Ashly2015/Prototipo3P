@@ -53,12 +53,15 @@ CREATE TABLE carreras
 -- -----------------------------------------------------
 -- Table `educativo`.`Cursos`
 -- -----------------------------------------------------
+
 CREATE TABLE cursos
 (
   codigo_curso VARCHAR(5),
+  codigo_carrera varchar(5),
   nombre_curso VARCHAR(45),
   estatus_curso VARCHAR(1),
-  PRIMARY KEY (codigo_curso)
+  PRIMARY KEY (codigo_curso),
+  FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera)
  ) ENGINE = InnoDB DEFAULT CHARSET=latin1;
 -- -----------------------------------------------------
 -- Table `educativo`.`Secciones`
@@ -97,33 +100,14 @@ CREATE TABLE jornadas
     estatus_jornada VARCHAR(1),
     PRIMARY KEY (codigo_jornada)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
--- -----------------------------------------------------
--- Table `educativo`.`Asignacion_cursos_alumnos`
--- -----------------------------------------------------
-CREATE TABLE asignacioncursosalumnos
-(
-  codigo_carrera VARCHAR(5),
-  codigo_sede VARCHAR(5),
-  codigo_jornada VARCHAR(5),
-  codigo_seccion VARCHAR(5),
-  codigo_aula VARCHAR(5),
-  codigo_curso VARCHAR(5),
-  carnet_alumno VARCHAR(15),
-  nota_asignacioncursoalumnos FLOAT(10,2), 
-  PRIMARY KEY (codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso, carnet_alumno),
-  FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera),
-  FOREIGN KEY (codigo_sede) REFERENCES sedes(codigo_sede),
-  FOREIGN KEY (codigo_jornada) REFERENCES jornadas(codigo_jornada),
-  FOREIGN KEY (codigo_seccion) REFERENCES secciones(codigo_seccion),
-  FOREIGN KEY (codigo_aula) REFERENCES aulas(codigo_aula),
-  FOREIGN KEY (codigo_curso) REFERENCES cursos(codigo_curso),
-  FOREIGN KEY (carnet_alumno) REFERENCES alumnos(carnet_alumno)
-  ) ENGINE = InnoDB DEFAULT CHARSET=latin1;
+
 -- -----------------------------------------------------
 -- Table `educativo`.`Asignacion_cursos_maestros`
 -- -----------------------------------------------------
+
 CREATE TABLE asignacioncursosmastros
 (
+  id_Maestro varchar(5),
   codigo_carrera VARCHAR(5),
   codigo_sede VARCHAR(5),
   codigo_jornada VARCHAR(5),
@@ -131,7 +115,7 @@ CREATE TABLE asignacioncursosmastros
   codigo_aula VARCHAR(5),
   codigo_curso VARCHAR(5),
   codigo_maestro VARCHAR(5),
-  PRIMARY KEY (codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso),
+  PRIMARY KEY (id_Maestro,codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso),
   FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera),
   FOREIGN KEY (codigo_sede) REFERENCES sedes(codigo_sede),
   FOREIGN KEY (codigo_jornada) REFERENCES jornadas(codigo_jornada),
@@ -150,6 +134,9 @@ CorreoUsuario varchar (40) not null
 
 )ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+-- -----------------------------------------------------
+-- Table `educativo`.`Asignacion_cursos_alumnos`
+-- -----------------------------------------------------
 
 CREATE TABLE asignacioncursosalumnos
 ( 
