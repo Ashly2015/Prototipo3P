@@ -623,6 +623,7 @@ public class AsignacionCursosMaestros extends javax.swing.JInternalFrame {
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "¡REGITRO FALLIDO!", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
 
         }
 

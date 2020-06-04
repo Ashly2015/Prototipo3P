@@ -594,7 +594,12 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                 jComboBox_ParcialItemStateChanged(evt);
             }
         });
-        getContentPane().add(jComboBox_Parcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 278, 150, -1));
+        jComboBox_Parcial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_ParcialActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox_Parcial, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 150, -1));
         getContentPane().add(txt_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 88, -1));
 
         jComboBox_Parcial2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -1323,6 +1328,7 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                 lb6.setText(rs.getString("codigo_curso"));
                 lb7.setText(rs.getString("carnet_alumno"));
                 txt_Nota.setText(rs.getString("nota_asignacioncursoalumnos"));
+                jComboBox_Parcial.setSelectedItem(rs.getString("Tipo_Nota"));
 
                 btnEliminar.setEnabled(true);
                 btnModificar.setEnabled(true);
@@ -1358,6 +1364,8 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             PreparedStatement pst7 = cn.prepareStatement("select nombre_alumno from alumnos where carnet_alumno=?");
             pst7.setString(1, lb2.getText().trim());
             ResultSet rs7 = pst7.executeQuery();
+            
+            
 
             while (rs1.next()) {
                 cbox_carrera.setSelectedItem(rs1.getString("nombre_carrera"));
@@ -1380,14 +1388,20 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             while (rs7.next()) {
                 cbox_alum.setSelectedItem(rs7.getString("nombre_alumno"));
             }
+             
+            if (this.jComboBox_Parcial.getSelectedIndex() > 0) {
+                this.jComboBox_Parcial2.setModel(new DefaultComboBoxModel(this.datos(this.jComboBox_Parcial.getSelectedItem().toString())));
+            }
             
+        
+             
             cbox_j.setEnabled(true);
             cbox_curso.setEnabled(true);
             cbox_sede.setEnabled(true);
             cbox_alum.setEnabled(true);
             cbox_sec.setEnabled(true);
             cbox_aula.setEnabled(true);
-            jComboBox_Parcial.setEnabled(true);
+            jComboBox_Parcial.setEnabled(false);
             jComboBox_Parcial2.setEnabled(true);
 
         } catch (Exception err) {
@@ -1764,6 +1778,10 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jComboBox_ParcialItemStateChanged
+
+    private void jComboBox_ParcialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_ParcialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_ParcialActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
