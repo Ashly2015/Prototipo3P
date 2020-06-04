@@ -1,7 +1,5 @@
 package examen_final;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -622,8 +620,8 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             } else {
 
             }
-            
-             cbox_curso.removeAllItems();
+
+            cbox_curso.removeAllItems();
             cbox_curso.addItem("Seleccione una opción");
             PreparedStatement pst6 = cn.prepareStatement("select nombre_curso from cursos where codigo_carrera=?");
             pst6.setString(1, lb1.getText());
@@ -633,7 +631,6 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                 cbox_curso.addItem(rs6.getString("nombre_curso"));
             }
 
-            
             cbox_sede.setEnabled(true);
 
         } catch (Exception e) {
@@ -1116,16 +1113,16 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                 System.out.println(e);
             }
         }
-        
-            cbox_j.setEnabled(false);
-            cbox_curso.setEnabled(false);
-            cbox_sede.setEnabled(false);
-            cbox_alum.setEnabled(false);
-            cbox_sec.setEnabled(false);
-            cbox_aula.setEnabled(false);
-            jComboBox_Parcial.setEnabled(false);
-            jComboBox_Parcial2.setEnabled(false);
-            
+
+        cbox_j.setEnabled(false);
+        cbox_curso.setEnabled(false);
+        cbox_sede.setEnabled(false);
+        cbox_alum.setEnabled(false);
+        cbox_sec.setEnabled(false);
+        cbox_aula.setEnabled(false);
+        jComboBox_Parcial.setEnabled(false);
+        jComboBox_Parcial2.setEnabled(false);
+
         /* try {
             Connection cn = DriverManager.getConnection(Principal.BD, Principal.Usuario, Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("insert into asignacioncursosalumnos values(?,?,?,?,?,?,?,?,?)");
@@ -1163,13 +1160,11 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "¡REGITRO FALLIDO!", "Error", JOptionPane.ERROR_MESSAGE);
 
         }*/
-
-        
-        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     public void IngresarMA(String ItemMA, String Item2MA, int Lugar) {
+        float nota = 0;
         try {
             String cero = "0";
             if (Item == ItemMA && Item2 == Item2MA) {
@@ -1177,6 +1172,17 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                 System.out.println(prueba);
                 if (prueba == true) {
                     Connection cn4 = DriverManager.getConnection(Principal.BD, Principal.Usuario, Principal.Contraseña);
+
+                    PreparedStatement pst = cn4.prepareStatement("select nota_asignacioncursoalumnos from asignacioncursosalumnos where id_Alumno = ?");
+                    pst.setString(1, txtbuscado.getText().trim());
+                    ResultSet rs = pst.executeQuery();
+                    if (rs.next()) {
+                        nota = rs.getFloat("nota_asignacioncursoalumnos");
+
+                    } else {
+                        nota = 0;
+                    }
+
                     PreparedStatement pst4 = cn4.prepareStatement("insert into asignacioncursosalumnos values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                     pst4.setString(1, txt_Codigo.getText().trim());
@@ -1188,14 +1194,17 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                     pst4.setString(7, lb6.getText().trim());
                     pst4.setString(8, lb7.getText().trim());
                     pst4.setString(9, Item);
-                    for (int i = 10; i <= 24; i++) {
+                    for (int i = 10; i <= 23; i++) {
                         if (i == Lugar) {
                             pst4.setString(i, txt_Nota.getText().trim());
                         } else {
                             pst4.setString(i, "0");
                         }
                     }
-
+                    String nota1 = txt_Nota.getText();
+                    float nota2 = Float.parseFloat(nota1);
+                    nota = nota + nota2;
+                    pst4.setString(24, Float.toString(nota));
                     pst4.executeUpdate();
                     txt_Codigo.setText("");
 
@@ -1240,11 +1249,11 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                             if (i == LugarC) {
                                 System.out.println(i);
                                 pst.setString(i, txt_Nota.getText().trim());
-                                System.out.println("Hola");
+
                             }
                         }
                         if (ParcialFloat >= 0) {
-                            System.out.println("Hola2");
+
                             if (i == 10 && i != LugarC) {
                                 txt_Nuevo.setText(Parcial_1);
                                 pst.setString(i, txt_Nuevo.getText().trim());
@@ -1276,7 +1285,7 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                                 txt_Nuevo.setText(Unidad_3);
                                 pst.setString(i, txt_Nuevo.getText().trim());
                             } else if (i == 20 && i != LugarC) {
-                                System.out.println("Entre");
+
                                 txt_Nuevo.setText(Unidad_4);
                                 pst.setString(i, txt_Nuevo.getText().trim());
                             } else if (i == 21 && i != LugarC) {
@@ -1364,8 +1373,6 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             PreparedStatement pst7 = cn.prepareStatement("select nombre_alumno from alumnos where carnet_alumno=?");
             pst7.setString(1, lb2.getText().trim());
             ResultSet rs7 = pst7.executeQuery();
-            
-            
 
             while (rs1.next()) {
                 cbox_carrera.setSelectedItem(rs1.getString("nombre_carrera"));
@@ -1388,13 +1395,11 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             while (rs7.next()) {
                 cbox_alum.setSelectedItem(rs7.getString("nombre_alumno"));
             }
-             
+
             if (this.jComboBox_Parcial.getSelectedIndex() > 0) {
                 this.jComboBox_Parcial2.setModel(new DefaultComboBoxModel(this.datos(this.jComboBox_Parcial.getSelectedItem().toString())));
             }
-            
-        
-             
+
             cbox_j.setEnabled(true);
             cbox_curso.setEnabled(true);
             cbox_sede.setEnabled(true);
@@ -1403,6 +1408,7 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             cbox_aula.setEnabled(true);
             jComboBox_Parcial.setEnabled(false);
             jComboBox_Parcial2.setEnabled(true);
+            btnRegistrar.setEnabled(false);
 
         } catch (Exception err) {
             err.printStackTrace();
@@ -1442,7 +1448,7 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             cbox_sede.setSelectedIndex(0);
             cbox_curso.setSelectedIndex(0);
             txtbuscado.setText("");
-            
+
             cbox_j.setEnabled(false);
             cbox_curso.setEnabled(false);
             cbox_sede.setEnabled(false);
@@ -1541,12 +1547,22 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
     public void ModificarT(String ItemT, String Item2T, int Lugar) {
         Item = jComboBox_Parcial.getSelectedItem().toString();
         Item2 = jComboBox_Parcial2.getSelectedItem().toString();
+        float nota = 0;
 
         try {
             String codigo = txtbuscado.getText().trim();
 
             Connection cn = DriverManager.getConnection(Principal.BD, Principal.Usuario, Principal.Contraseña);
             PreparedStatement pst = cn.prepareStatement("update asignacioncursosalumnos set  id_Alumno = ?, codigo_carrera = ?,codigo_sede = ?,codigo_jornada = ?, codigo_seccion = ?,codigo_aula=?,codigo_curso=?,carnet_alumno=?,Tipo_Nota=?,Parcial_1=?,Parcial_2=?,Parcial_3=?,Parcial_1T=?,Parcial_2T=?,Parcial_3T=?,Parcial_1B=?,Unidad_1=?,Unidad_2=?,Unidad_3=?,Unidad_4=?,Extraordinario=?,Privado=?,Zona=?,nota_asignacioncursoalumnos=? where id_Alumno = " + codigo);
+            PreparedStatement pst1 = cn.prepareStatement("select nota_asignacioncursoalumnos from asignacioncursosalumnos where id_Alumno = ?");
+            pst1.setString(1, txtbuscado.getText().trim());
+            ResultSet rs1 = pst1.executeQuery();
+            if (rs1.next()) {
+                nota = rs1.getFloat("nota_asignacioncursoalumnos");
+
+            } else {
+                nota = 0;
+            }
 
             pst.setString(1, txt_Codigo.getText().trim());
             pst.setString(2, lb1.getText().trim());
@@ -1624,7 +1640,12 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
                         } else if (i == 24 && i != Lugar) {
                             // BusquedaMayor("Parcial_1","Parcial_2","Parcial_3","Parcial_1T","Parcial_2T","Parcial_3T","Parcial_1B","Unidad_1","Unidad_2","Unidad_3","Unidad_4","Extraordinario","Privado","Zona","nota_asignacioncursoalumnos");
                             txt_Nuevo.setText(NotaS);
-                            pst.setString(i, txt_Nuevo.getText().trim());
+                            
+
+                            String nota1 = txt_Nota.getText();
+                            float nota2 = Float.parseFloat(nota1);
+                            nota = nota + nota2;
+                            pst.setString(i, Float.toString(nota));
                         }
 
                     }
@@ -1654,7 +1675,7 @@ public class AsignacionCursosAlumnos extends javax.swing.JInternalFrame {
             cbox_sede.setSelectedIndex(0);
             cbox_curso.setSelectedIndex(0);
             txtbuscado.setText("");
-            
+
             cbox_j.setEnabled(false);
             cbox_curso.setEnabled(false);
             cbox_sede.setEnabled(false);
