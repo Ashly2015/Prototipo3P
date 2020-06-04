@@ -140,4 +140,50 @@ CREATE TABLE asignacioncursosmastros
   FOREIGN KEY (codigo_curso) REFERENCES cursos(codigo_curso),
   FOREIGN KEY (codigo_maestro) REFERENCES maestros(codigo_maestro)
   ) ENGINE = InnoDB DEFAULT CHARSET=latin1;
+  
+  create table usuarios 
+(
+ID int primary key auto_increment,
+NombreUsuario varchar (30) not null,
+Pass varchar (30) not null,
+CorreoUsuario varchar (40) not null
+
+)ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE asignacioncursosalumnos
+( 
+  id_Alumno varchar(5),
+  codigo_carrera VARCHAR(5),
+  codigo_sede VARCHAR(5),
+  codigo_jornada VARCHAR(5),
+  codigo_seccion VARCHAR(5),
+  codigo_aula VARCHAR(5),
+  codigo_curso VARCHAR(5),
+  carnet_alumno VARCHAR(15),
+  Tipo_Nota varchar(70),
+  Parcial_1 float,
+  Parcial_2 float,
+  Parcial_3 float,
+  Parcial_1T float,
+  Parcial_2T float,
+  Parcial_3T float,
+  Parcial_1B float,
+  Unidad_1 float,
+  Unidad_2 float,
+  Unidad_3 float,
+  Unidad_4 float,
+  Extraordinario float,
+  Privado float,
+  Zona float,
+  nota_asignacioncursoalumnos float, 
+  PRIMARY KEY (id_Alumno,codigo_carrera, codigo_sede, codigo_jornada, codigo_seccion, codigo_aula, codigo_curso, carnet_alumno),
+  FOREIGN KEY (codigo_carrera) REFERENCES carreras(codigo_carrera),
+  FOREIGN KEY (codigo_sede) REFERENCES sedes(codigo_sede),
+  FOREIGN KEY (codigo_jornada) REFERENCES jornadas(codigo_jornada),
+  FOREIGN KEY (codigo_seccion) REFERENCES secciones(codigo_seccion),
+  FOREIGN KEY (codigo_aula) REFERENCES aulas(codigo_aula),
+  FOREIGN KEY (codigo_curso) REFERENCES cursos(codigo_curso),
+  FOREIGN KEY (carnet_alumno) REFERENCES alumnos(carnet_alumno)
+  ) ENGINE = InnoDB DEFAULT CHARSET=latin1;
 

@@ -26,8 +26,8 @@ public class Principal extends javax.swing.JFrame {
     private MantenimientoMaestros ventanaMaestro;
     private MantenimientoSecciones ventanaSeccion;
     private MantenimientoSedes ventanaSede;
-    private AsignacionCA ventanaAsignacion;
-    private AsignacionCM ventanaAsignacionM;
+    private AsignacionCursosAlumnos ventanaAsignacion;
+    private AsignacionCursosMaestros ventanaAsignacionM;
 
     public static String BD = "jdbc:mysql://localhost/siu";
     public static String Usuario = "root";
@@ -351,7 +351,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_MJornadasActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        ventanaAsignacion = new AsignacionCA();
+        ventanaAsignacion = new AsignacionCursosAlumnos();
         Panel();
         CentrarVentanas(ventanaAsignacion);
         ventanaP.add(jLabel1);      // TODO add your handling code here:
@@ -360,7 +360,7 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
 
-        ventanaAsignacionM = new AsignacionCM();
+        ventanaAsignacionM = new AsignacionCursosMaestros();
         Panel();
         CentrarVentanas(ventanaAsignacionM);
         ventanaP.add(jLabel1);
