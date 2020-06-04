@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ranbr
  */
-public class N1 extends javax.swing.JInternalFrame {
+public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public N1() {
+    public MantenimientoAlumnos() {
         initComponents();
     }
 

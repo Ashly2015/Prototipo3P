@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class Principal extends javax.swing.JFrame {
 
-    private N1 v1;
+    private MantenimientoAlumnos v1;
     private N2 v2;
     private N3 v3;
     private N4 v4;
@@ -156,7 +156,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        v1 = new N1();
+        v1 = new MantenimientoAlumnos();
         jDesktopPane1.add(v1);
 
         // TODO add your handling code here:
