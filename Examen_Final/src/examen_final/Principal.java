@@ -26,6 +26,8 @@ public class Principal extends javax.swing.JFrame {
     private MantenimientoMaestros ventanaMaestro;
     private MantenimientoSecciones ventanaSeccion;
     private MantenimientoSedes ventanaSede;
+    private AsignacionCA ventanaAsignacion;
+    private AsignacionCM ventanaAsignacionM;
 
     public static String BD = "jdbc:mysql://localhost/siu";
     public static String Usuario = "root";
@@ -111,7 +113,8 @@ public class Principal extends javax.swing.JFrame {
         MSecciones = new javax.swing.JMenuItem();
         MSedes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -219,13 +222,21 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu3.setText("Procesos");
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem13.setText("Asignacion cursos a Alumnos");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jMenuItem13ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu3.add(jMenuItem13);
+
+        jMenuItem1.setText("Asignacion cursos a Maestros");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
 
@@ -257,11 +268,6 @@ public class Principal extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
                // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-      
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void MfacultadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MfacultadesActionPerformed
         ventanaFacultad = new MantenimientoFacultad();
@@ -344,6 +350,23 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MJornadasActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        ventanaAsignacion = new AsignacionCA();
+        Panel();
+        CentrarVentanas(ventanaAsignacion);
+        ventanaP.add(jLabel1);      // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+
+        ventanaAsignacionM = new AsignacionCM();
+        Panel();
+        CentrarVentanas(ventanaAsignacionM);
+        ventanaP.add(jLabel1);
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,7 +422,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JDesktopPane ventanaP;
     // End of variables declaration//GEN-END:variables
 }
