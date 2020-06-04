@@ -105,9 +105,9 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         MAlumnos = new javax.swing.JMenuItem();
         MAulas = new javax.swing.JMenuItem();
+        Mfacultades = new javax.swing.JMenuItem();
         MCarreras = new javax.swing.JMenuItem();
         MCursos = new javax.swing.JMenuItem();
-        Mfacultades = new javax.swing.JMenuItem();
         MJornadas = new javax.swing.JMenuItem();
         MMaestros = new javax.swing.JMenuItem();
         MSecciones = new javax.swing.JMenuItem();
@@ -122,6 +122,9 @@ public class Principal extends javax.swing.JFrame {
         jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Rachel Barrios 9959-18-649");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/origami-mitchell.png"))); // NOI18N
 
         ventanaP.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -129,12 +132,14 @@ public class Principal extends javax.swing.JFrame {
         ventanaP.setLayout(ventanaPLayout);
         ventanaPLayout.setHorizontalGroup(
             ventanaPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1352, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         ventanaPLayout.setVerticalGroup(
             ventanaPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 204, 204));
 
         jMenu5.setText("Abrir");
         jMenuBar1.add(jMenu5);
@@ -162,6 +167,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(MAulas);
 
+        Mfacultades.setText("Mantenimiento Facultades");
+        Mfacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MfacultadesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Mfacultades);
+
         MCarreras.setText("Mantenimiento Carreras");
         MCarreras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,14 +190,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(MCursos);
-
-        Mfacultades.setText("Mantenimiento Facultades");
-        Mfacultades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MfacultadesActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Mfacultades);
 
         MJornadas.setText("Mantenimiento Jornada");
         MJornadas.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +227,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu3.setText("Procesos");
 
+        jMenuItem13.setBackground(new java.awt.Color(51, 255, 204));
         jMenuItem13.setText("Asignacion cursos a Alumnos");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

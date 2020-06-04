@@ -149,6 +149,7 @@ public class Login extends javax.swing.JFrame {
         txt_Usuario.setFont(new java.awt.Font("Segoe UI Historic", 0, 11)); // NOI18N
         txt_Usuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_Usuario.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_Usuario.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_Usuario.setOpaque(false);
         txt_Usuario.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         txt_Usuario.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +164,7 @@ public class Login extends javax.swing.JFrame {
         txt_Contraseña.setForeground(new java.awt.Color(255, 255, 255));
         txt_Contraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_Contraseña.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_Contraseña.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_Contraseña.setOpaque(false);
         kGradientPanel1.add(txt_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 290, 30));
 
